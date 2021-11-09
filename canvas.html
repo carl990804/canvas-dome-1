@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="canvas">
+    <!-- <div id="canvas">
     <script>
-        canvas.onclick=(e)=>{
+        canvas.onmousemove=(e)=>{
             console.log(e);
             let div=document.createElement('div')
             div.style.position="absolute"
@@ -26,7 +26,35 @@
             canvas.appendChild(div)
 
         }
-    </script>
+    </script> -->
+    <canvas id='canvas' width="100" height="100">
+        <script>   
+        var canvas=document.getElementById('canvas')
+        canvas.width=document.documentElement.clientWidth
+        canvas.height=document.documentElement.clientHeight
+        var ctx=canvas.getContext('2d')
+        let painting=false
+        ctx.fillStyle='blue'
+        canvas.onmousedown=()=>{
+            painting=true
+        }
+        canvas.onmousemove=(e)=>{
+            if(painting===true){
+        // ctx.fillRect(e.clientX-5,e.clientY-5,10,10)
+        ctx.beginPath()
+        ctx.arc(e.clientX,e.clientY,10,0,2*Math.PI)
+        ctx.stroke()
+        ctx=fill()
+
+            }else {
+
+            }
+            canvas.on,onmouseup=()=>{
+                painting=false
+            }
+        }
+        </script>
+    </canvas>
         
     </div>
 </body>
